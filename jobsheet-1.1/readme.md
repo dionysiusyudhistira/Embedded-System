@@ -24,7 +24,7 @@ Dalam koding ini berfungsi untuk mengetahui MAC Address yang terdapat di ESP32
 void setup(){
 Serial.begin(115200);
 WiFi.mode(WIFI_MODE_STA); //mengaktifkan mode WiFi Station
-Serial.println(WiFi.macAddress()); //print MAC Address di Serial Monirot
+Serial.println(WiFi.macAddress()); //print MAC Address di Serial Monitor
 }
 void loop(){ 
 }
@@ -36,7 +36,8 @@ MAC Address diperlukan untuk identifikasi perangkat ESP32 dalam protokol komunik
 
 
 # Dokumentasi
-![MAC ADDRESS](https://user-images.githubusercontent.com/118155742/210126557-2fee30cf-cfcf-4cdf-b783-71a9ca477aa7.png)
+[mac](https://user-images.githubusercontent.com/121749328/210414969-bc0d766a-ae09-470f-901c-7c00e2fd33c8.png)
+
 
 
 
