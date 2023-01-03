@@ -11,7 +11,7 @@ PROTOKOL KOMUNIKASI DAN SENSOR
 ## 1. ESP32 Capacitive Touch Sensor
 # Program
 a-capasitivetouchsensor - Hanya membaca sentuhan yang dilakukan dan menampilkan di serial monitor
-```
+```c
 // ESP32 Touch Test
 // Just test touch pin - Touch0 is T0 which is on GPIO 4. 
 void setup() {
