@@ -174,8 +174,11 @@ Dalam pratikum ini dibuktikan bahwa komunikasi berjalan satu arah dimana ESP32 s
 
 # Dokumentasi
 
-https://user-images.githubusercontent.com/121749328/210313789-6b84e91a-57a8-4ac8-a38d-4f0b2054a91d.mp4
-https://user-images.githubusercontent.com/121749328/210313798-2d5c4578-3f69-4dc2-acf1-be5d4ac9b798.mp4
+
+
+https://user-images.githubusercontent.com/121749328/210314054-3a0129b3-8926-48a6-87b0-3d561b12edc7.mp4
+
+
 
 
 ## E. Two-Way Communication
