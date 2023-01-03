@@ -5,8 +5,8 @@ DASAR PEMROGRAMAN ESP32 UNTUK PEMROSESAN DATA INPUT/OUTPUT ANALOG DAN DIGITAL
 
 ## Anggota Kelompok
 
--[Dionysius Brammetya Yudhistira]
--[Noviantie Putriastuti]
+- [Dionysius Brammetya Yudhistira]
+- [Noviantie Putriastuti]
 
 ## Analisa BLINK
 
