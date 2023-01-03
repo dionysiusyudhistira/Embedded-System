@@ -422,8 +422,24 @@ rfid.PCD_StopCrypto1(); // stop encryption on PCD
 Pratikum ini memberikan kesimpulan dalam pembacaan sensor dapat menjadi suatu input bagi keluaran perangkat lainnya, seperti dalam RFID yang membaca kartu yang benar maka akan membuat LED dan Servo bergerak sesuai dengan yang diperintahkan.
 
 # Dokumentasi
-## ESP32 Capacitive Touch Sensor
+## 1. ESP32 Capacitive Touch Sensor
 
-## Mengakses Sensor DHT 11 (Single Wire / BUS)
 
-## Mengakses Sensor RFID (SPI Communication)
+https://user-images.githubusercontent.com/121749328/210420472-01695166-4495-483d-b357-02a3a775a5c5.mp4
+
+
+
+https://user-images.githubusercontent.com/121749328/210420494-618865d2-0c64-4f4f-b644-ecce461140a1.mp4
+
+
+## 2. Mengakses Sensor DHT 11 (Single Wire / BUS)
+
+
+https://user-images.githubusercontent.com/121749328/210420793-4792e292-5123-4d82-8406-9fa820c9cb37.mp4
+
+
+## 3. Mengakses Sensor RFID (SPI Communication)
+
+
+https://user-images.githubusercontent.com/121749328/210421025-e7945f28-0647-435a-8011-7daf474a30b4.mp4
+
