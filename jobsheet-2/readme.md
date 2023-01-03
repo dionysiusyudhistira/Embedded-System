@@ -9,7 +9,7 @@ PROTOKOL KOMUNIKASI DAN SENSOR
 
 
 ## 1. ESP32 Capacitive Touch Sensor
-# Program
+### Program
 a-capasitivetouchsensor - Hanya membaca sentuhan yang dilakukan dan menampilkan di serial monitor
 ```c
 // ESP32 Touch Test
@@ -116,12 +116,12 @@ digitalWrite(ledPin3, LOW);
   delay(500);
 }
 ```
-# Kesimpulan
+### Kesimpulan
 Pratikum ini memberikan kesimpulan bahwa dalam pemanfaatan ESP32 sebagai mikrokontroller dapat membaca sensor berupa sentuhan kemudian dari sentuhan itu dapat diberikan output dalam contoh ini akan menghidupkan LED dan membuat LED running dari kiri ke kanan.
 
 
 ## 2. Mengakses Sensor DHT 11 (Single Wire / BUS)
-# Program
+### Program
 ```c
 //Library yang dibutuhkan
 #include "DHT.h"
@@ -262,6 +262,6 @@ digitalWrite(ledPin3, LOW);
 ```
 
 
-# Kesimpulan
+### Kesimpulan
 - Sensor DHT11 berfungsi untuk membaca kelembapan dan suhu yang dapat di ESP32 untuk mengumpulkan data dan menjadikannya sebuah input untuk sebuah sistem seperti dalam contoh jika suhu dibawah 30° C maka LED akan berjalan runnning.
 - Sensor DHT11 memiliki delay pembacaan sekitar 2 detik sehingga pembacaan realtime dengan di serial monitor akan mengalami delay.
