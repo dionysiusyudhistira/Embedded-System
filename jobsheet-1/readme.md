@@ -167,4 +167,20 @@ delay(500);
 
 ## PWM
 
+
+https://user-images.githubusercontent.com/121749328/210416793-6b9a9dc1-b29f-4858-a8ad-7eb260195db8.mp4
+
+
+
+https://user-images.githubusercontent.com/121749328/210416818-dd38e8d6-91b6-4d4f-acea-c1897abdb9c6.mp4
+
+
 ## ADC & DAC
+
+
+https://user-images.githubusercontent.com/121749328/210416998-927bdc52-c8c6-4134-828a-638b16c1748e.mp4
+
+
+
+https://user-images.githubusercontent.com/121749328/210417015-786b9367-aaf7-4ccb-958e-172663e94ac0.mp4
+
