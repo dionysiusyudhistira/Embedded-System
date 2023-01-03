@@ -27,7 +27,7 @@ delay(1000);
 
 
 a-capasitivetouchsensorled1 - Jika disentuh maka LED akan menyala ketika disentuh dan tidak menyala jika tidak disentuh
-```
+```c
 // menginisiasi pin GPIO yang akan dipakai
 const int touchPin = 4; //Pin GPIO yang mendeteksi sentuhan
 const int ledPin = 16; //Pin GPIO yang akan menyalan LED sebagai keluaran
@@ -66,7 +66,7 @@ void loop(){
 
 
 a-capasitivetouchsensorled2 - LED Running
-```
+```c
 // menginisiasi pin GPIO yang akan dipakai
 const int touchPin = 4; 
 const int ledPin1 = 16;
