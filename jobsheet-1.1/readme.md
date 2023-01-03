@@ -36,12 +36,7 @@ MAC Address diperlukan untuk identifikasi perangkat ESP32 dalam protokol komunik
 
 
 # Dokumentasi
-[mac](https://user-images.githubusercontent.com/121749328/210414969-bc0d766a-ae09-470f-901c-7c00e2fd33c8.png)
-
-
-
-
-
+![mac](https://user-images.githubusercontent.com/121749328/210415138-129fca14-4378-40d2-9840-9a7896a45a32.png)
 
 
 ## B. ESP-NOW One-Way Point-to-Point Communication
