@@ -120,7 +120,7 @@ digitalWrite(ledPin3, LOW);
 Pratikum ini memberikan kesimpulan bahwa dalam pemanfaatan ESP32 sebagai mikrokontroller dapat membaca sensor berupa sentuhan kemudian dari sentuhan itu dapat diberikan output dalam contoh ini akan menghidupkan LED dan membuat LED running dari kiri ke kanan.
 
 
-## 2.Mengakses Sensor DHT 11 (Single Wire / BUS)
+## 2. Mengakses Sensor DHT 11 (Single Wire / BUS)
 # Program
 ```c
 //Library yang dibutuhkan
