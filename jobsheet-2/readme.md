@@ -420,3 +420,10 @@ rfid.PCD_StopCrypto1(); // stop encryption on PCD
 ```
 ### Kesimpulan
 Pratikum ini memberikan kesimpulan dalam pembacaan sensor dapat menjadi suatu input bagi keluaran perangkat lainnya, seperti dalam RFID yang membaca kartu yang benar maka akan membuat LED dan Servo bergerak sesuai dengan yang diperintahkan.
+
+# Dokumentasi
+## ESP32 Capacitive Touch Sensor
+
+## Mengakses Sensor DHT 11 (Single Wire / BUS)
+
+## Mengakses Sensor RFID (SPI Communication)
