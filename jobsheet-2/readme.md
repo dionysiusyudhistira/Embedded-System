@@ -9,7 +9,7 @@ PROTOKOL KOMUNIKASI DAN SENSOR
 
 
 ## 1. ESP32 Capacitive Touch Sensor
-# Koding
+# Program
 a-capasitivetouchsensor - Hanya membaca sentuhan yang dilakukan dan menampilkan di serial monitor
 ```
 // ESP32 Touch Test
