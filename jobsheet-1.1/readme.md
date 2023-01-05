@@ -166,7 +166,7 @@ void loop() {
 ![RECEIVER](https://user-images.githubusercontent.com/121749328/210868860-c3a4bbf9-1749-4a14-9fb7-04d12701f4e5.png)
 
 ## 3.  One-Way, One-to-Many Communication
-### Program transmitter
+### Program Transmitter
 Mengirim pesan yang sama ke beberapa board ESP32
 <details>
     <summary>Program (click to open)</summary>
@@ -247,7 +247,7 @@ void loop() {
 
 <img width="394" alt="TRANSMITTERC" src="https://user-images.githubusercontent.com/121749328/210871011-1a05c5c7-1176-4bd0-935e-255cfdc218c1.png">
 
-### Program receiver
+### Program Receiver
 <details>
     <summary>Program (click to open)</summary>
 
@@ -297,7 +297,7 @@ void loop() {
 <img width="605" alt="RECEIVERC" src="https://user-images.githubusercontent.com/121749328/210871249-6eaded05-1143-4557-a809-650d31692d6e.png">
     
 ## 4. One-Way, Many-to-One Communication
-### Program transmitter
+### Program Transmitter
 <details>
     <summary>Program (click to open)</summary>
 
@@ -370,7 +370,7 @@ sizeof(myData));
 
 <img width="362" alt="TRANSMITTERD" src="https://user-images.githubusercontent.com/121749328/210871844-65f8ba46-746a-4058-b67d-3c3fa980c166.png">
 
-## Program receiver
+### Program Receiver
 <details>
     <summary>Program (click to open)</summary>
 
