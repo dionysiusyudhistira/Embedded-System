@@ -74,6 +74,9 @@ https://user-images.githubusercontent.com/121749328/210791851-bdbed79e-9386-46c0
 
 ### Program GPIO 2
 Tambahkan 1 LED dan 1 push button pada rangkaian. Kemudian tambahkan program agar ketika push button ke-2 ditekan, LED akan melakukan blink setiap 500 ms sekali.
+<details>
+    <summary>Program (click to open)</summary>
+    
 ```c
 // set pin numbers
 const int buttonPin = 4;
@@ -114,12 +117,16 @@ void loop() {
 }
 ```
 
+    </details>
 
 https://user-images.githubusercontent.com/121749328/210792374-627f1fc5-5a17-4922-96a3-61de993d3793.mp4
 
 
 ### Program GPIO 3
 Tambahkan 3 LED dan 1 push button pada rangkaian, kemudian kembangkan program agar ketika push button ke-3 ditekan, LED akan menyala menjadi running led (menyala bergantian dari kiri ke kanan).
+<details>
+    <summary>Program (click to open)</summary>
+
 ```c
 // set pin numbers
 const int buttonPin = 4;
@@ -186,7 +193,8 @@ void loop() {
  }
 }
 ```
-
+    
+</details>
 
 https://user-images.githubusercontent.com/121749328/210792851-e5a80166-60de-4990-b809-b2b86587b080.mp4
 
