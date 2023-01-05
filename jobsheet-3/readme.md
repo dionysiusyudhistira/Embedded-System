@@ -49,10 +49,7 @@ void loop() {
 }
 ```
 </details>
- 
- 
-*Serial Monitor*
-![js3.1](https://raw.githubusercontent.com/llaurensius/pratikum-sistemembeded-2223/main/jobsheet-3/js3.1/3.1.jpg)
+![A](https://user-images.githubusercontent.com/121749328/210864242-01245101-090a-4e99-addc-b7eecd0afbda.png)
 
 B. Menghubungkan ESP32 dengan Jaringan WiFi
 <details>
@@ -84,10 +81,7 @@ B. Menghubungkan ESP32 dengan Jaringan WiFi
     }
 ```
 </details>
- 
- 
-*Serial Monitor*
-![js3.2](https://raw.githubusercontent.com/llaurensius/pratikum-sistemembeded-2223/main/jobsheet-3/js3.2/3.2.jpg)
+![B](https://user-images.githubusercontent.com/121749328/210864305-34096d81-b74e-422d-85ed-52023efc7cc6.png)
 
 C.	Menghubungkan Kembali (Re-connect) ESP32 dengan Jaringan Wi-Fi
 <details>
@@ -134,9 +128,7 @@ void loop() {
 }
 ```
 </details>
- 
-*Serial Monitor*
-![js3.3](https://raw.githubusercontent.com/llaurensius/pratikum-sistemembeded-2223/main/jobsheet-3/js3.3/js3.3.jpg)
+![C](https://user-images.githubusercontent.com/121749328/210864363-a0713bc2-f431-4363-b993-6e510bc83c2b.png)
 
 D.	Mengganti Hostname ESP32
 <details>
