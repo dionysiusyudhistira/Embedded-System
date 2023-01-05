@@ -7,7 +7,6 @@ TOPOLOGI JARINGAN LOKAL DAN WIFI
 
 ## 1. ESP32 Wi-Fi Modes dan Wifi-Scan
 ### Program
-Program dibawah ini memungkinkan ESP32 untuk terkoneksi pada sebuah jaringan Wifi
 <details>
   <summary>Program (click to open)</summary>
 
