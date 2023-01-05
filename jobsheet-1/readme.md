@@ -65,6 +65,52 @@ if (button1 == HIGH) {
 }
 ```
 
+
+https://user-images.githubusercontent.com/121749328/210791851-bdbed79e-9386-46c0-803f-116085364fd8.mp4
+
+
+
+Tambahkan 1 LED dan 1 push button pada rangkaian. Kemudian tambahkan program agar ketika push button ke-2 ditekan, LED akan melakukan blink setiap 500 ms sekali
+```c
+// set pin numbers
+const int buttonPin = 4;
+const int buttonPin2 = 16;
+const int ledPin = 5;
+const int ledPin2 = 18;
+int buttonState = 0;
+int buttonState2 = 0;
+
+void setup() {
+ Serial.begin(115200);
+ pinMode(buttonPin, INPUT);
+ pinMode(buttonPin2, INPUT);
+ pinMode(ledPin, OUTPUT);
+ pinMode(ledPin2, OUTPUT);
+}
+
+void loop() {
+ buttonState = digitalRead(buttonPin);
+ buttonState2 = digitalRead(buttonPin2);
+ Serial.println(buttonState);
+ Serial.println(buttonState2);
+ 
+ if (buttonState == HIGH) {
+ digitalWrite(ledPin, HIGH);
+ } else {
+ digitalWrite(ledPin, LOW);
+ }
+ 
+ if (buttonState2 == HIGH) {
+ digitalWrite(ledPin2, HIGH);
+ delay(500);
+ digitalWrite(ledPin2, LOW);
+ delay(500);
+ } else {
+ digitalWrite(ledPin2, LOW);
+ }
+}
+```
+
 ## 2. PWM
 ### Program
 
