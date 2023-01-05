@@ -4,8 +4,8 @@ DASAR PEMROGRAMAN ESP32 UNTUK PEMROSESAN DATA INPUT/OUTPUT ANALOG DAN DIGITAL
 
 ## Anggota Kelompok
 
-- [Dionysius Brammetya Yudhistira]
-- [Noviantie Putriastuti]
+- Dionysius Brammetya Yudhistira
+- Noviantie Putriastuti
 
 ## 1. GPIO
 ### Program GPIO 1
@@ -68,7 +68,6 @@ if (button1 == HIGH) {
 </details>
 
 https://user-images.githubusercontent.com/121749328/210791851-bdbed79e-9386-46c0-803f-116085364fd8.mp4
-
 
 ### Program GPIO 2
 Tambahkan 1 LED dan 1 push button pada rangkaian. Kemudian tambahkan program agar ketika push button ke-2 ditekan, LED akan melakukan blink setiap 500 ms sekali.
