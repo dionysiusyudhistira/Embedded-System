@@ -108,6 +108,8 @@ void loop() {
 ```
 </details>
 
+![SENDER](https://user-images.githubusercontent.com/121749328/210868773-1ba3525e-ad05-4582-8607-81d2152ba156.png)
+    
 ### Program Receiver
 <details>
     <summary>Program (click to open)</summary>
@@ -160,3 +162,5 @@ void loop() {
 }
 ```
 </details>
+
+![RECEIVER](https://user-images.githubusercontent.com/121749328/210868860-c3a4bbf9-1749-4a14-9fb7-04d12701f4e5.png)
