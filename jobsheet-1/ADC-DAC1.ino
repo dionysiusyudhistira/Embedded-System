@@ -1,4 +1,4 @@
-// Potentiometer is connected to GPIO 34 (Analog ADC1_CH6)
+// Potentiometer is connected to GPIO 34 (Analog ADC1_CH6) 
 const int potPin = 34;
 // variable for storing the potentiometer value
 int potValue = 0;
