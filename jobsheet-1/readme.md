@@ -186,7 +186,78 @@ https://user-images.githubusercontent.com/121749328/210792851-e5a80166-60de-4990
 
 
 ## 2. PWM
-### Program
+Pogram dibawah ini dapat mengatur intensitas cahaya LED
+```c
+// the number of the LED pin
+const int ledPin = 16; // 16 corresponds to GPIO16
+// setting PWM properties
+const int freq = 5000;
+const int ledChannel = 0; //PWM Channel
+const int resolution = 8; //resolution bit
+void setup(){
+ // configure LED PWM functionalitites
+ ledcSetup(ledChannel, freq, resolution);
+ 
+ // attach the channel to the GPIO to be controlled
+ ledcAttachPin(ledPin, ledChannel);
+}
+void loop(){
+ // increase the LED brightness
+for(int dutyCycle = 0; dutyCycle <= 255; dutyCycle++){ 
+ // changing the LED brightness with PWM
+ ledcWrite(ledChannel, dutyCycle);
+ delay(15);
+ }
+ // decrease the LED brightness
+ for(int dutyCycle = 255; dutyCycle >= 0; dutyCycle--){
+ // changing the LED brightness with PWM
+ ledcWrite(ledChannel, dutyCycle); 
+ delay(15);
+ }
+}
+```
+
+
+https://user-images.githubusercontent.com/121749328/210793996-50a6af91-bae9-49bb-801a-47311c3e336d.mp4
+
+
+Program dibawah ini mengatur instensitas cahaya beberapa LED sekaligus
+```c
+// the number of the LED pin
+const int ledPin = 16; // 16 corresponds to GPIO16
+const int ledPin2 = 17; // 17 corresponds to GPIO17
+const int ledPin3 = 5; // 5 corresponds to GPIO5
+// setting PWM properties
+const int freq = 5000;
+const int ledChannel = 0;
+const int resolution = 8;
+void setup(){
+ // configure LED PWM functionalitites
+ ledcSetup(ledChannel, freq, resolution);
+ 
+ // attach the channel to the GPIO to be controlled
+ ledcAttachPin(ledPin, ledChannel);
+ ledcAttachPin(ledPin2, ledChannel);
+ ledcAttachPin(ledPin3, ledChannel);
+}
+void loop(){
+ // increase the LED brightness
+ for(int dutyCycle = 0; dutyCycle <= 255; dutyCycle++){ 
+ // changing the LED brightness with PWM
+ ledcWrite(ledChannel, dutyCycle);
+ delay(15);
+ }
+ // decrease the LED brightness
+ for(int dutyCycle = 255; dutyCycle >= 0; dutyCycle--){
+ // changing the LED brightness with PWM
+ ledcWrite(ledChannel, dutyCycle); 
+ delay(15);
+ }
+}
+```
+
+
+https://user-images.githubusercontent.com/121749328/210794431-2c680792-1378-491e-8dfe-ffd8bd8f46c4.mp4
 
 
 ## ADC DAC
