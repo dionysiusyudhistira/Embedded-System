@@ -491,4 +491,6 @@ void loop() {
 }
 ```
 </details>
-    
+
+<img width="374" alt="SENSOR" src="https://user-images.githubusercontent.com/121749328/210873090-a2f72633-8c56-495c-838c-aa2d26315a76.png">
+
