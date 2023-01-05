@@ -116,7 +116,7 @@ void loop() {
 }
 ```
 
-    </details>
+</details>
 
 https://user-images.githubusercontent.com/121749328/210792374-627f1fc5-5a17-4922-96a3-61de993d3793.mp4
 
