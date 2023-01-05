@@ -1,13 +1,13 @@
 # Jobsheet 3
-Topologi Jaringan Lokal dan Wifi
+TOPOLOGI JARINGAN LOKAL DAN WIFI
 
 ## Anggota Kelompok
 - Dionysius Brammetya Yudhistira
 - Noviantie Putriastuti
 
-## Hasil Percobaan
-
-A.	ESP32 Wi-Fi Modes dan Wifi-Scan
+## 1. ESP32 Wi-Fi Modes dan Wifi-Scan
+### Program
+Program dibawah ini memungkinkan ESP32 untuk terkoneksi pada sebuah jaringan Wifi
 <details>
   <summary>Program (click to open)</summary>
 
@@ -52,7 +52,8 @@ void loop() {
   
 ![A](https://user-images.githubusercontent.com/121749328/210864242-01245101-090a-4e99-addc-b7eecd0afbda.png)
 
-B. Menghubungkan ESP32 dengan Jaringan WiFi
+## 2. Menghubungkan ESP32 dengan Jaringan WiFi
+# Program
 <details>
   <summary>Program (click to open)</summary>
  
@@ -85,7 +86,8 @@ B. Menghubungkan ESP32 dengan Jaringan WiFi
   
 ![B](https://user-images.githubusercontent.com/121749328/210864305-34096d81-b74e-422d-85ed-52023efc7cc6.png)
 
-C.	Menghubungkan Kembali (Re-connect) ESP32 dengan Jaringan Wi-Fi
+## 3.	Menghubungkan Kembali (Re-connect) ESP32 dengan Jaringan Wi-Fi
+### Program
 <details>
   <summary>Program (click to open)</summary>
  
@@ -133,7 +135,8 @@ void loop() {
   
 ![C](https://user-images.githubusercontent.com/121749328/210864363-a0713bc2-f431-4363-b993-6e510bc83c2b.png)
 
-D.	Mengganti Hostname ESP32
+## 4. Mengganti Hostname ESP32
+### Program
 <details>
   <summary>Program (click to open)</summary>
  
@@ -171,7 +174,8 @@ void loop() {
 *Hasil*<br /><br />
 ![js3.4](https://raw.githubusercontent.com/llaurensius/pratikum-sistemembeded-2223/main/jobsheet-3/js3.4/js3.4.jpg)
 
-E.	Mengirim Data Sensor ke Database<br /><br />
+## 5. Mengirim Data Sensor ke Database
+### Program
 <details>
   <summary>Program (click to open)</summary>
  
