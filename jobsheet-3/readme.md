@@ -2,8 +2,8 @@
 Topologi Jaringan Lokal dan Wifi
 
 ## Anggota Kelompok
-- Hanif Nugraha Ramadhan
-- Muhammad Rafif Hasani
+- Dionysius Brammetya Yudhistira
+- Noviantie Putriastuti
 
 ## Hasil Percobaan
 
@@ -332,12 +332,3 @@ void loop(){
 }
 ```
 </details>
- 
-## Analisa
-
-A.	ESP32 Wi-Fi Modes dan Wifi-Scan
-
-
-## Kesimpulan
-
-## Tugas
