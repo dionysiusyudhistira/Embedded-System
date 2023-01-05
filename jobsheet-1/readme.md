@@ -66,7 +66,6 @@ if (button1 == HIGH) {
 }
 }
 ```
-    
 </details>
 
 https://user-images.githubusercontent.com/121749328/210791851-bdbed79e-9386-46c0-803f-116085364fd8.mp4
