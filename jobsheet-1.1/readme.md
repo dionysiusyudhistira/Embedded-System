@@ -24,7 +24,7 @@ void loop(){
 ```
 </details>
 
-![mac](https://user-images.githubusercontent.com/121749328/210415606-37abd6da-3319-4492-bb9d-39aea20ca669.png)
+![MAC ADDRESS](https://user-images.githubusercontent.com/121749328/210868465-a0b0d40c-02e8-4499-ac7d-630a732dc0c7.png)
 
 ## 2. ESP-NOW One-Way Point-to-Point Communication
 ### Program Transmitter
