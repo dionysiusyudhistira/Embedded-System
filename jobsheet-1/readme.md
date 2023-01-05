@@ -11,7 +11,7 @@ DASAR PEMROGRAMAN ESP32 UNTUK PEMROSESAN DATA INPUT/OUTPUT ANALOG DAN DIGITAL
 ## 1. GPIO
 ### Program GPIO 1
 Program di bawah ini mengendalikan led menggunakan push button.
-
+<details>
 ```c
 // set pin numbers
 const int buttonPin1 = 15;  // the number of the pushbutton pin 
@@ -64,7 +64,7 @@ if (button1 == HIGH) {
 }
 }
 ```
-
+</details>
 
 https://user-images.githubusercontent.com/121749328/210791851-bdbed79e-9386-46c0-803f-116085364fd8.mp4
 
