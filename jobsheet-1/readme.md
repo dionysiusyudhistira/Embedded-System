@@ -201,6 +201,9 @@ https://user-images.githubusercontent.com/121749328/210792851-e5a80166-60de-4990
 ## 2. PWM
 ### Program PWM 1
 Pogram dibawah ini dapat mengatur intensitas cahaya LED
+<details>
+    <summary>Program (click to open)</summary>
+
 ```c
 // the number of the LED pin
 const int ledPin = 16; // 16 corresponds to GPIO16
@@ -231,12 +234,16 @@ for(int dutyCycle = 0; dutyCycle <= 255; dutyCycle++){
 }
 ```
 
+</details>
 
 https://user-images.githubusercontent.com/121749328/210793996-50a6af91-bae9-49bb-801a-47311c3e336d.mp4
 
 
 ### Program PWM 2
 Program dibawah ini mengatur instensitas cahaya beberapa LED sekaligus
+<details>
+    <summary>Program (click to open)</summary>
+    
 ```c
 // the number of the LED pin
 const int ledPin = 16; // 16 corresponds to GPIO16
@@ -270,7 +277,8 @@ void loop(){
  }
 }
 ```
-
+    
+</details>
 
 https://user-images.githubusercontent.com/121749328/210794431-2c680792-1378-491e-8dfe-ffd8bd8f46c4.mp4
 
@@ -278,6 +286,9 @@ https://user-images.githubusercontent.com/121749328/210794431-2c680792-1378-491e
 ## ADC DAC
 ### Program ADC DAC 1
 Program ini dapat mengatur besaran resistansi menggunakan potensiometer dan menampilkan nilai resistansi pada serial monitor
+<details>
+    <summary>Program (click to open)</summary>
+    
 ```c
 // Potentiometer is connected to GPIO 34 (Analog ADC1_CH6) 
 const int potPin = 34;
@@ -294,13 +305,17 @@ potValue = analogRead(potPin);
  delay(500);
 }
 ```
-
+    
+</details>
 
 https://user-images.githubusercontent.com/121749328/210798509-95330656-accf-404b-827e-ab85ef1e5b9b.mp4
 
 
 ### Program ADC DAC 2
 Intensitas cahaya LED berubah - ubah karena nilai resistansi yang berubah
+<details>
+    <summary>Program (click to open)</summary>
+    
 ```c
 // These constants won't change. They're used to give names to the pins used:
 const int analogInPin = 34; // Analog input pin that the potentiometer is attached to
@@ -334,6 +349,8 @@ void loop() {
  delay(2);
 }
 ```
+
+</details>
 
 
 https://user-images.githubusercontent.com/121749328/210799068-87ec61e6-0804-47e5-90d6-b9ac8d9a93bd.mp4
