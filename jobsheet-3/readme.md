@@ -82,6 +82,7 @@ B. Menghubungkan ESP32 dengan Jaringan WiFi
     }
 ```
 </details>
+  
 ![B](https://user-images.githubusercontent.com/121749328/210864305-34096d81-b74e-422d-85ed-52023efc7cc6.png)
 
 C.	Menghubungkan Kembali (Re-connect) ESP32 dengan Jaringan Wi-Fi
@@ -129,6 +130,7 @@ void loop() {
 }
 ```
 </details>
+  
 ![C](https://user-images.githubusercontent.com/121749328/210864363-a0713bc2-f431-4363-b993-6e510bc83c2b.png)
 
 D.	Mengganti Hostname ESP32
