@@ -9,7 +9,6 @@ DASAR PEMROGRAMAN ESP32 UNTUK PEMROSESAN DATA INPUT/OUTPUT ANALOG DAN DIGITAL
 - [Noviantie Putriastuti]
 
 ## 1. GPIO
-### Program
 Program di bawah ini mengendalikan led menggunakan push button.
 
 ```c
