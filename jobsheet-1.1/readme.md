@@ -1,25 +1,18 @@
-# Jobsheet 1.1.
-
+# Jobsheet 1.1
 JARINGAN SENSOR NIRKABEL MENGGUNAKAN ESP-NOW
-
 
 ## Anggota Kelompok
 
-- [Dionysius Brammetya Yudhistira]
-- [Noviantie Putriastuti]
+- Dionysius Brammetya Yudhistira
+- Noviantie Putriastuti
 
+## 1. Memperoleh MAC Address ESP32 Receiver
+### Program
+Program ini berfungsi untuk mengetahui MAC Address yang terdapat di ESP32
+<details>
+    <summary>Program (click to open)</summary>
 
-## A. Memperoleh MAC Address ESP32 Receiver
-1. Buka Arduino IDE
-2. Kemudian ketikkan script program berikut di Arduino IDE
-3. Upload program tersebut ke ESP32.
-4. Setelah program berhasil diupload, buka serial monitor.
-5. Catat Mac Address ESP32.
-
-
-# Analisa
-Dalam koding ini berfungsi untuk mengetahui MAC Address yang terdapat di ESP32
-```
+```c
 #include "WiFi.h" //library yang digunakan hanya WiFi.h
 void setup(){
 Serial.begin(115200);
@@ -29,20 +22,16 @@ Serial.println(WiFi.macAddress()); //print MAC Address di Serial Monitor
 void loop(){ 
 }
 ```
+</details>
 
-
-# Kesimpulan
-MAC Address diperlukan untuk identifikasi perangkat ESP32 dalam protokol komunikasi ESP-NOW, dengan MAC Address kita bisa mengirim data ke ESP32 lainnya melalui protokol ESP-NOW
-
-
-# Dokumentasi
 ![mac](https://user-images.githubusercontent.com/121749328/210415606-37abd6da-3319-4492-bb9d-39aea20ca669.png)
 
-
-
-## B. ESP-NOW One-Way Point-to-Point Communication
-## Transmitter
-```
+## 2. ESP-NOW One-Way Point-to-Point Communication
+### Program Transmitter
+<details>
+    <summary>Program (click to open)</summary>
+    
+```c
 //library yang dibutuhkan
 #include <esp_now.h>
 #include <WiFi.h>
@@ -117,9 +106,13 @@ void loop() {
   delay(2000);
 }
 ```
+</details>
 
-## Receiver
-```
+### Program Receiver
+<details>
+    <summary>Program (click to open)</summary>
+    
+```c
 //library yang digunakan
 #include <esp_now.h> 
 #include <WiFi.h>
@@ -166,11 +159,9 @@ esp_now_register_recv_cb(OnDataRecv);
 void loop() { 
 }
 ```
-# Kesimpulan
-Dalam pratikum ini dibuktikan bahwa komunikasi berjalan satu arah dimana ESP32 sender akan mengirimkan data ke ESP32 Koordinator dan diuji coba pula dengan jarak yang tidak terlalu jauh dan kondisi LOSS komunikasi ESP berjalan dengan baik tanpa mengalami gagal pengiriman.
+</details>
 
 
-# Dokumentasi
 
 ## E. Two-Way Communication
 # Koding
