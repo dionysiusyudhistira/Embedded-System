@@ -49,6 +49,7 @@ void loop() {
 }
 ```
 </details>
+  
 ![A](https://user-images.githubusercontent.com/121749328/210864242-01245101-090a-4e99-addc-b7eecd0afbda.png)
 
 B. Menghubungkan ESP32 dengan Jaringan WiFi
