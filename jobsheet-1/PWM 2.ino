@@ -9,7 +9,7 @@ const int resolution = 8;
 void setup(){
  // configure LED PWM functionalitites
  ledcSetup(ledChannel, freq, resolution);
-
+ 
  // attach the channel to the GPIO to be controlled
  ledcAttachPin(ledPin, ledChannel);
  ledcAttachPin(ledPin2, ledChannel);
@@ -17,7 +17,7 @@ void setup(){
 }
 void loop(){
  // increase the LED brightness
- for(int dutyCycle = 0; dutyCycle <= 255; dutyCycle++){
+ for(int dutyCycle = 0; dutyCycle <= 255; dutyCycle++){ 
  // changing the LED brightness with PWM
  ledcWrite(ledChannel, dutyCycle);
  delay(15);
@@ -25,7 +25,7 @@ void loop(){
  // decrease the LED brightness
  for(int dutyCycle = 255; dutyCycle >= 0; dutyCycle--){
  // changing the LED brightness with PWM
- ledcWrite(ledChannel, dutyCycle);
+ ledcWrite(ledChannel, dutyCycle); 
  delay(15);
  }
 }
