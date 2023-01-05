@@ -189,6 +189,7 @@ https://user-images.githubusercontent.com/121749328/210792851-e5a80166-60de-4990
 
 
 ## 2. PWM
+### Program PWM 1
 Pogram dibawah ini dapat mengatur intensitas cahaya LED
 ```c
 // the number of the LED pin
@@ -224,6 +225,7 @@ for(int dutyCycle = 0; dutyCycle <= 255; dutyCycle++){
 https://user-images.githubusercontent.com/121749328/210793996-50a6af91-bae9-49bb-801a-47311c3e336d.mp4
 
 
+### Program PWM 2
 Program dibawah ini mengatur instensitas cahaya beberapa LED sekaligus
 ```c
 // the number of the LED pin
@@ -264,53 +266,4 @@ https://user-images.githubusercontent.com/121749328/210794431-2c680792-1378-491e
 
 
 ## ADC DAC
-Dalam pekerjaan Analog Digital Converter dan Digital Analog Converter dicontohkan dengan membaca input dari sebuah potensiometer yang diterjemahkan secara digital melalui pemrogaman sebagai berikut.
-```c
-potValue = analogRead(potPin); 
-delay(500);
-volt = potValue*5/4095;
-Serial.println("Nilai ADC");
-Serial.println(potValue);
-Serial.println("Nilai Tegangan");
-Serial.println(volt);
-```
-Fungsi ini akan membaca setiap putaran potensio dan menghasilkan angka sesuai dengan putaran potensiometer.
-
-Percobaan ADC DAC kedua mengimplementasikan angka yang dibaca oleh ESP32 menjadi nyala lampu LED, jika potensiometer diputar yang paling kecil maka LED tidak menyala dan sebaliknya jika potensiometer diputar pada kapasitas maksimum maka LED akan nyala paling terang. Koding untuk percobaan kedua yang berfungsi untuk membaca dan memberikan perintah ke LED untuk menyala adalah sebagai berikut.
-```c
-sensorValue = analogRead(analogInPin); // read the analog in value:
-outputValue = map(sensorValue, 0, 4095, 0, 255); // map it to the range of the analog out:
-ledcWrite(ledChannel, outputValue); // change the analog out value:
-// print the results to the Serial Monitor:
-Serial.print("sensor = ");
-Serial.print(sensorValue);
-Serial.print("\t output = ");
-Serial.println(outputValue);
-// wait 2 milliseconds before the next loop for the analog-to-digital 
-// converter to settle after the last reading:
-delay(500);
-```
-
-
-# Dokumentasi
-## GPIO
-
-## PWM
-
-
-https://user-images.githubusercontent.com/121749328/210416793-6b9a9dc1-b29f-4858-a8ad-7eb260195db8.mp4
-
-
-
-https://user-images.githubusercontent.com/121749328/210416818-dd38e8d6-91b6-4d4f-acea-c1897abdb9c6.mp4
-
-
-## ADC & DAC
-
-
-https://user-images.githubusercontent.com/121749328/210416998-927bdc52-c8c6-4134-828a-638b16c1748e.mp4
-
-
-
-https://user-images.githubusercontent.com/121749328/210417015-786b9367-aaf7-4ccb-958e-172663e94ac0.mp4
-
+### Program ADC DAC 1
