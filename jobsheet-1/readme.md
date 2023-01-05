@@ -280,7 +280,7 @@ void loop(){
 https://user-images.githubusercontent.com/121749328/210794431-2c680792-1378-491e-8dfe-ffd8bd8f46c4.mp4
 
 
-## ADC DAC
+## 3. ADC DAC
 ### Program ADC DAC 1
 Program ini dapat mengatur besaran resistansi menggunakan potensiometer dan menampilkan nilai resistansi pada serial monitor
 <details>
