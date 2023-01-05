@@ -108,7 +108,7 @@ void loop() {
 ```
 </details>
 
-![SENDER](https://user-images.githubusercontent.com/121749328/210868773-1ba3525e-ad05-4582-8607-81d2152ba156.png)
+![SENDER](https://user-images.githubusercontent.com/121749328/210869099-d1d631de-9244-4cd7-a3bf-a0efa4564ae9.png)
     
 ### Program Receiver
 <details>
