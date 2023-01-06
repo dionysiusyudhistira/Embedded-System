@@ -7,8 +7,8 @@ PROTOKOL KOMUNIKASI DAN SENSOR
 - Noviantie Putriastuti
 
 ## 1. ESP32 Capacitive Touch Sensor
-### Program
-Hanya membaca sentuhan yang dilakukan dan menampilkan di serial monitor
+### Program Capacitive Touch Sensor 1
+Membaca sentuhan yang dilakukan dan menampilkan di serial monitor
 <details>
     <summary>Program (click to open)</summary>
 
@@ -27,6 +27,9 @@ delay(1000);
 ```
 </details>
 
+https://user-images.githubusercontent.com/121749328/210941385-4783b3da-e820-492d-955d-de255b124784.mp4
+
+### Program Capacitive Touch Sensor 2
 Jika disentuh maka LED akan menyala ketika disentuh dan tidak menyala jika tidak disentuh
 <details>
     <summary>Program (click to open)</summary>
@@ -69,7 +72,10 @@ void loop(){
 ```
 </details>
 
-LED Running
+https://user-images.githubusercontent.com/121749328/210941602-cd761f2d-c13b-41ec-b5f8-37ec0f50f1b1.mp4
+
+### Program Capacitive Touch Sensor 3
+LED running (menyala bergantian dari kiri ke kanan)
 <details>
     <summary>Program (click to open)</summary>
 
@@ -125,6 +131,8 @@ digitalWrite(ledPin3, LOW);
 ```
 </details>
 
+https://user-images.githubusercontent.com/121749328/210941971-4a059997-7d3b-4cbd-8428-102068c465d5.mp4
+    
 ## 2. Mengakses Sensor DHT 11 (Single Wire / BUS)
 ### Program
 ```c
