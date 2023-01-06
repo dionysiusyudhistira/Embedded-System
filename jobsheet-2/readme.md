@@ -1,4 +1,3 @@
-
 # Jobsheet 2 
 PROTOKOL KOMUNIKASI DAN SENSOR
 
