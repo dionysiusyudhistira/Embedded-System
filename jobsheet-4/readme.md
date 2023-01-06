@@ -4,7 +4,7 @@
 - Dionysius Brammetya Yudhistira
 - Noviantie Putriastuti
 
-# 1. CAYENNE (MQTT) + SENSOR (DHT11) + LED (ON/OFF) + BUTTON DI WEBSITE MONITORING
+## 1. CAYENNE (MQTT) + SENSOR (DHT11) + LED (ON/OFF) + BUTTON DI WEBSITE MONITORING
 ### Program
 <details>
   <summary>Program (click to open)</summary>
@@ -80,7 +80,7 @@ CAYENNE_IN(3)
 
 https://user-images.githubusercontent.com/121760251/210358473-1bae9070-5118-448c-a296-1a2ef45dc1a3.mp4
 
-# B. ADAFRUIT.IO (MQTT) + IFTTT -> SENSOR (DHT11) + LED (ON/OFF) -> SUARA (GOOGLE ASSITANT)
+## 2. ADAFRUIT.IO (MQTT) + IFTTT -> SENSOR (DHT11) + LED (ON/OFF) -> SUARA (GOOGLE ASSITANT)
 ### Program
 <details>
   <summary>Program (click to open)</summary>
@@ -245,7 +245,7 @@ IFTTT
   
 ![image](https://user-images.githubusercontent.com/118667288/210917840-69cbf1be-0ecd-479e-aa53-56ed546da238.png)
 
-# C. THINGSPEAK (HTTP/REST) + SENSOR (DHT11)
+## 3. THINGSPEAK (HTTP/REST) + SENSOR (DHT11)
 ### PROGRAM
 <details>
   <summary>Program (click to open)</summary>
@@ -334,7 +334,7 @@ void loop()
 
 ![image](https://user-images.githubusercontent.com/118667288/210918736-db82c694-7daf-4cd9-bea8-33b8da672c2b.png)
 
-# D. ESP Now + IOT
+## 4. ESP Now + IOT
 ### PROGRAM
 SENDER
 <details>
