@@ -1,19 +1,16 @@
 
 # Jobsheet 4 
-Cayenne (MQTT) + SENSOR (DHT11) + LED (ON/OFF) + BUTTON di website monitoring
 
 
+# Anggota Kelompok
 
-## Anggota Kelompok
-
-- Dionysius Brammetya Yudhistira
-- Noviantie Putriastuti
-
-## Skematik
-![image](https://user-images.githubusercontent.com/118155742/210129902-f24a85d2-176a-4027-9952-b82e8edb55d9.png)
+- Hanif Nugraha Ramadhan {4.31.20.0.10}
+- Muhammad Rafif Hasani  {4.31.20.0.16}
 
 
-## Analisa
+# A. CAYENNE (MQTT) + SENSOR (DHT11) + LED (ON/OFF) + BUTTON DI WEBSITE MONITORING
+
+## ANALISA
 Dalam percobaan kali ini menggunakan ESP32 yang terpasang sensor DHT11 berfungsi untuk membaca Suhu dan Temperature kemudian diteruskan oleh ESP32 melalui protokol MQTT (Cayenne) untuk agar bisa terhubung dan berkomunikasi antar mesin.
 
 Library yang dibutuhkan adalah 
@@ -100,9 +97,524 @@ CAYENNE_IN(3)
 ```
 
 
-# Kesimpulan
+## KESIMPULAN
 Dalam pratikum ini disimpulkan bahwa ESP32 dapat digunakan untuk perangkat IoT yang terhubung ke internet sehingga user dapat kontrol perangkat ESP32 dalam jarah jauh dengan syarat ESP32 selalu terhubung dengan internet dan terhubung ke broker MQTT (dalam pratikum ini menggunakan Cayenne).
 
 Pratikum ini contoh dengan membaca sensor DHT11 yang dikirimkan ke Cayenne dan Cayenne mengirimkan sebuah nilai (0/1) untuk memberikan perintah ESP32 untuk menghidupkan LED.
-# Dokumentasi
+## DOKUMENTASI
 ## ESP32 + MQTT (Cayenne) + Sensor Temperature, Humidity (DHT11) + LED (Output)
+
+https://user-images.githubusercontent.com/121760251/210358473-1bae9070-5118-448c-a296-1a2ef45dc1a3.mp4
+
+
+
+
+# B. ADAFRUIT.IO (MQTT) + IFTTT -> SENSOR (DHT11) + LED (ON/OFF) -> SUARA (GOOGLE ASSITANT)
+
+## ANALISA 
+
+Pada percobaan kali ini, digunakan protokol MQTT agar ESP32 dapat berkomunikasi dengan perangkat lain melalui internet. MQTT (Message Queuing Telemetry Transport) protokol merupakan sebuah protokol yang berjalan diatas stack TCP/IP dan dirancang khusus untuk machine to machine yang tidak memiliki alamat khusus. Maksud dari kata tidak memiliki alamat khusus ini seperti halnya sebuah arduino, raspi atau device lain yang tidak memiliki alamat khusus. Sistem kerja MQTT menerapkan Publish dan Subscribe data. Dan pada penerapannya, device akan terhubung pada sebuah Broker dan mempunyai suatu Topic tertentu. Platform MQTT server yang digunakan adalah Adafruit.io. Pada percobaan ini, ESP32 akan mengirimkan data sensor DHT11 (suhu dan kelembaban) ke server MQTT (Adafruit.io) dan akan dicoba untuk melakukan kontrol LED melalui Adafruit.io
+## PROGRAM 
+
+```c
+#include <ESP8266WiFi.h>
+#include "Adafruit_MQTT.h"
+#include "Adafruit_MQTT_Client.h"
+#include <DHT.h>
+
+#define WLAN_SSID       "ALPHA 1" 
+#define WLAN_PASS       "wologito37"     
+#define AIO_SERVER      "io.adafruit.com"
+#define AIO_SERVERPORT  1883              
+#define AIO_USERNAME    "azpaska"
+#define AIO_KEY         "aio_lFJJ47BKS9I94LwxwYjAxnT1N4Q2"
+#define DHTPIN D5
+#define led1 D0
+#define led2 D1
+#define led3 D2
+
+DHT dht(DHTPIN, DHT11); 
+
+WiFiClient client;
+
+Adafruit_MQTT_Client mqtt(&client, AIO_SERVER, AIO_SERVERPORT, AIO_USERNAME, AIO_KEY);
+Adafruit_MQTT_Publish temperature = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/temperature");
+Adafruit_MQTT_Publish humidity = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/humidity");
+Adafruit_MQTT_Subscribe Light1 = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME"/feeds/LED-RED");
+Adafruit_MQTT_Subscribe Light2 = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "/feeds/LED-GREEN");
+Adafruit_MQTT_Subscribe Light3 = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME"/feeds/LED-BLUE");
+Adafruit_MQTT_Subscribe Light = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME"/feeds/LED");
+
+float temp,humi;
+uint32_t x=0;
+void MQTT_connect();
+//=========================================================
+void setup() {
+  Serial.begin(9600);
+  delay(10);
+  dht.begin();     
+
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+
+  Serial.println(); Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(WLAN_SSID);
+
+  WiFi.begin(WLAN_SSID, WLAN_PASS);
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+  Serial.println();
+
+  Serial.println("WiFi connected");
+  Serial.println("IP address: "); Serial.println(WiFi.localIP());
+
+  mqtt.subscribe(&Light1);
+  mqtt.subscribe(&Light2);
+  mqtt.subscribe(&Light3);
+  mqtt.subscribe(&Light);
+}
+//=============================================
+void loop() {  
+  MQTT_connect();
+  humi = dht.readHumidity();
+  temp = dht.readTemperature();
+  if (isnan(humi) || isnan(temp)) {
+    Serial.println("DHT11 tidak terbaca... !");
+    return;
+  }
+  else{ 
+  // Now we can publish stuff!
+    Serial.print("Temperature=");
+    Serial.println(temp);
+    //Serial.print("...");
+    if (! temperature.publish(temp)) {
+      Serial.println(F("Publish Temperature Failed"));
+      } else {
+      Serial.println(F("Publish Temperature OK!"));
+    }
+    Serial.print("Humidity=");
+    Serial.println(humi);
+    //Serial.print("...");
+      if (! humidity.publish(humi)) {
+        Serial.println(F("Publish humidity Failed"));
+        } else {
+        Serial.println(F("Publish Humidity OK!"));
+      }
+    delay(5000);  
+    }
+    
+  Adafruit_MQTT_Subscribe *subscription;
+  while ((subscription = mqtt.readSubscription(20000))) {
+    if (subscription == &Light1) {
+      Serial.print(F("Got: "));
+      Serial.println((char *)Light1.lastread);
+      int Light1_State = atoi((char *)Light1.lastread);
+      digitalWrite(led1, Light1_State);
+
+    }
+    if (subscription == &Light2) {
+      Serial.print(F("Got: "));
+      Serial.println((char *)Light2.lastread);
+      int Light2_State = atoi((char *)Light2.lastread);
+      digitalWrite(led2, Light2_State);
+    }
+    if (subscription == &Light3) {
+      Serial.print(F("Got: "));
+      Serial.println((char *)Light3.lastread);
+      int Light3_State = atoi((char *)Light3.lastread);
+      digitalWrite(led3, Light3_State);
+    }
+    if (subscription == &Light) {
+      Serial.print(F("Got: "));
+      Serial.println((char *)Light.lastread);
+      int Light_State = atoi((char *)Light.lastread);
+      digitalWrite(led1, Light_State);
+      digitalWrite(led2, Light_State);
+      digitalWrite(led3, Light_State);
+    }
+  }
+}
+
+//===============================================
+void MQTT_connect() {
+  int8_t ret;
+  if (mqtt.connected()) {
+    return;
+  }
+
+  Serial.print("Connecting to MQTT... ");
+
+  uint8_t retries = 3;
+  while ((ret = mqtt.connect()) != 0) { // connect will return 0 for connected
+       Serial.println(mqtt.connectErrorString(ret));
+       Serial.println("Retrying MQTT connection in 5 seconds...");
+       mqtt.disconnect();
+       delay(5000);  // wait 5 seconds
+       retries--;
+       if (retries == 0) {
+         while (1);
+       }
+  }
+  Serial.println("MQTT Connected!");
+}
+```
+
+## RANGKAIAN
+
+![image](https://user-images.githubusercontent.com/118667288/210917439-3fab5753-4bc0-4531-b494-2601545e3152.png)
+
+![image](https://user-images.githubusercontent.com/118667288/210917479-8d5d9cd4-a514-49f2-9ddf-d961a4737beb.png)
+
+## HASIL PERCOBAAN
+
+Serial Monitor
+![image](https://user-images.githubusercontent.com/118667288/210917732-da67957a-6d9e-484f-94e3-e3405bd348d5.png)
+
+Adafruit.io
+
+![image](https://user-images.githubusercontent.com/118667288/210917794-ad67d112-c173-4d89-873e-b48c4ac23068.png)
+
+IFTTT
+![image](https://user-images.githubusercontent.com/118667288/210917840-69cbf1be-0ecd-479e-aa53-56ed546da238.png)
+
+
+## KESIMPULAN 
+
+Dari percobaan yang telah dilakukan, didapat kesimpulan sebagai berikut:
+1. ESP32 dapat berkomunikasi melalui internet melalui suatu protokol. Protokol merupakan peraturan atau prosedur untuk mengirimkan sebuah data pada perangkat elektronik.
+2. MQTT merukapan suatu protokol yang sangat ringan dan membutuhkan bandwidth yang sangat kecil, sehingga tidak memerlukan jaringan yang cepat. Namun dengan kekurangan protokol ini hanya bisa bertukar data informasi yaitu publish dan subscribe, tidak dapat malakukan operasi create dan delete.
+3. Salah satu server protokol MQTT yang dapat digunakan adalah Adafruit.io, dengan cara kerja publish (mengirim data ke server) dan subscribe (menerima data dari  server).
+4. ESP32 dapat saling terhubung dengan platform lain melalui internet.
+
+# C. THINGSPEAK (HTTP/REST) + SENSOR (DHT11)
+
+## ANALISA 
+
+Pada percobaan kali ini, digunakan protokol HTTP/REST dan server Thingspeak. REST atau Representational State Transfer adalah gaya arsitekturial dan pendekatan komunikasi yang bersifat stateless dan menggunakan HTTP/HTTPS untuk transmisi data. API yang menggunakan protokol REST disebut RESTful API. Pada percobaan ini, metode yang digunakan cukup sederhana, yaitu ESP32 hanya mengirimkan data sensor DHT11 ke server Thingspeak. Seperti pada percobaan sebelumnya, ESP32 harus tersambung pada jaringan WiFi.
+
+## PROGRAM 
+ ```c
+ #include <DHT.h>
+#include <ESP8266WiFi.h>
+ 
+String apiKey = "O54IVHCUBLMPKMWD";     //  Enter your Write API key from ThingSpeak
+ 
+const char *ssid =  "ALPHA 1";     // replace with your wifi ssid and wpa2 key
+const char *pass =  "wologito37";
+const char* server = "api.thingspeak.com";
+ 
+#define DHTPIN D5          //pin where the dht11 is connected
+ 
+DHT dht(DHTPIN, DHT11);
+ 
+WiFiClient client;
+ 
+void setup() 
+{
+       Serial.begin(115200);
+       delay(10);
+       dht.begin();
+ 
+       Serial.println("Connecting to ");
+       Serial.println(ssid);
+       
+       WiFi.begin(ssid, pass);
+ 
+      while (WiFi.status() != WL_CONNECTED) 
+     {
+            delay(500);
+            Serial.print(".");
+     }
+      Serial.println("");
+      Serial.println("WiFi connected");
+}
+ 
+void loop() 
+{
+      float h = dht.readHumidity();
+      float t = dht.readTemperature();
+      
+              if (isnan(h) || isnan(t)) 
+                 {
+                     Serial.println("Failed to read from DHT sensor!");
+                      return;
+                 }
+                         if (client.connect(server,80))   //   "184.106.153.149" or api.thingspeak.com
+                      {     
+                             String postStr = apiKey;
+                             postStr +="&field1=";
+                             postStr += String(t);
+                             postStr +="&field2=";
+                             postStr += String(h);
+                             postStr += "\r\n\r\n";
+ 
+                             client.print("POST /update HTTP/1.1\n");
+                             client.print("Host: api.thingspeak.com\n");
+                             client.print("Connection: close\n");
+                             client.print("X-THINGSPEAKAPIKEY: "+apiKey+"\n");
+                             client.print("Content-Type: application/x-www-form-urlencoded\n");
+                             client.print("Content-Length: ");
+                             client.print(postStr.length());
+                             client.print("\n\n");
+                             client.print(postStr);
+ 
+                             Serial.print("Temperature: ");
+                             Serial.print(t);
+                             Serial.print(" degrees Celcius, Humidity: ");
+                             Serial.print(h);
+                             Serial.println("%. Send to Thingspeak.");
+                        }
+          client.stop();
+          Serial.println("Waiting...");
+          
+  // thingspeak needs minimum 15 sec delay between updates
+  delay(1000);
+}
+```
+## HASIL PERCOBAAN
+
+![image](https://user-images.githubusercontent.com/118667288/210918703-8c53ef2f-a569-4090-be45-a590ad2d2fc5.png)
+
+![image](https://user-images.githubusercontent.com/118667288/210918736-db82c694-7daf-4cd9-bea8-33b8da672c2b.png)
+
+
+## KESIMPULAN 
+
+Dari percobaan yang telah dilakukan, didapat kesimpulan sebagai berikut:
+
+1. ESP32 dapat berkomunikasi melalui internet melalui suatu protokol. Protokol merupakan peraturan atau prosedur untuk mengirimkan sebuah data pada perangkat elektronik.
+2. Protokol HTTP/REST merupakan salah satu protokol yang dapat digunakan ESP32 untuk berkomunkasi melalui internet. Protokol ini memiliki kelebihan yaitu memungkinkan untuk melakukan operasi CRUD (create, read, update, delete). Namun dengan kelemahan membutuhkan bandwidth yang lebih tinggi dari protokol MQTT.
+
+
+
+# D. ESP Now + IOT
+## ANALISA
+Dalam pratikum ini memakai protokol ESP-NOW berjumlah 3 buah ESP32 yang terbagiatas 2 buah ESP32 sebagai Sender dengan terhubung sensor DHT11 dan 1 buah ESP32 sebagai Receive/Koordinator yang akan mengirimkan nilai sensor dari 2 buah ESP32 tadi ke Cayenne.
+
+## PROGRAM 
+
+SENDER
+```
+//Library yang dibutuhkan
+#include <esp_now.h>
+#include <esp_wifi.h>
+#include <WiFi.h>
+#include "DHT.h"
+
+//Mendefinisikan DHT11 di pin GPIO 4 dan jenis DHT yang digunakan
+#define DHTPIN 4
+#define DHTTYPE DHT11
+
+//Mac Address yang akan dituju untuk menerima data
+uint8_t broadcastAddress[] = {0x78, 0x21, 0x84, 0x9C, 0x13, 0x8C};
+
+//Board ID ESP32 - digunakan sebagai identifikasi ESP yang terhubung ke koordinator
+const int espNumber = 2;
+
+//Struktur data yang akan dikirimkan, struktur data harus sama dengan receiver
+typedef struct struct_message {
+  int id;
+  float temp;
+  float hum;
+} struct_message;
+
+//membuat struktur data dengan nama myData
+struct_message myData;
+
+//Membuat interface peer
+esp_now_peer_info_t peerInfo;
+
+//Mengirim notifikasi apabila data berhasil dikirimkan
+void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+  Serial.print("\r\nLast Packet Send Status:\t");
+  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
+}
+
+// Variable untuk membaca temperature dan humidity
+float temperature;
+float humidity;
+
+WiFiClient  client;
+
+//Mengisisiasi pin GPIO dan tipe DHT11 yang tersambung
+DHT dht(DHTPIN, DHTTYPE);
+
+//Memasukan nama SSID yang sama-sama tersambung
+constexpr char WIFI_SSID[] = "k";
+
+//Memindai channel wifi untuk ditumpangi dalam pengiriman data
+int32_t getWiFiChannel(const char *ssid) {
+  if (int32_t n = WiFi.scanNetworks()) {
+    for (uint8_t i = 0; i < n; i++) {
+      if (!strcmp(ssid, WiFi.SSID(i).c_str())) {
+        return WiFi.channel(i);
+      }
+    }
+  }
+  return 0;
+}
+void setup() {
+  Serial.begin(115200); //Memulai serial dengan 115200 baud rate
+  dht.begin(); // Memulai fungsi DHT
+  WiFi.mode(WIFI_STA); //Membuat ESP32 sebagai station
+  
+  //Mendapatkan channel wifi
+  int32_t channel = getWiFiChannel(WIFI_SSID); 
+
+  WiFi.printDiag(Serial); // Uncomment to verify channel number before
+  esp_wifi_set_promiscuous(true);
+  esp_wifi_set_channel(channel, WIFI_SECOND_CHAN_NONE);
+  esp_wifi_set_promiscuous(false);
+  WiFi.printDiag(Serial);
+  if (esp_now_init() != ESP_OK) {
+    Serial.println("Error initializing ESP-NOW");
+    return;
+  }
+  
+  //Mengirimkan data ke ESP32 yang ditunjuk sebagai koordinator sekaligus mengirimkan feedback apabila paket diterima koordinator
+  esp_now_register_send_cb(OnDataSent); 
+
+  //Regristasi peer
+  memcpy(peerInfo.peer_addr, broadcastAddress, 6); 
+  //peerInfo.channel = 0;
+  peerInfo.encrypt = false;
+
+  //Menambahkan peer
+  if (esp_now_add_peer(&peerInfo) != ESP_OK) {
+    Serial.println("Failed to add peer");
+    return;
+  }
+}
+
+void loop() {
+
+//Membaca nilai sensor temperature dan humidity dari DHT11 dan memverifikasi nilai data, apabila nilai sensor terbaca maka disimpan di variabel humidity & temperature
+  humidity = dht.readHumidity();
+  temperature = dht.readTemperature();
+  if (isnan(humidity) || isnan(temperature)) {
+    Serial.println(F("Failed to read from DHT sensor!"));
+    return;
+  }
+  
+ //Menampilkan pembacaan nilai sensor
+  Serial.print("Temperature (ºC): ");
+  Serial.print(temperature);
+  Serial.print(" Humidity (%): ");
+  Serial.println(humidity);
+
+//Mengirimkan data nilai sensor ke ESP32 Koordinator
+  myData.id = espNumber;
+  myData.temp = temperature;
+  myData.hum = humidity;
+  esp_err_t result = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData));
+
+//Memberitahukan bahwa pesan sukses/gagal dikirim
+  if (result == ESP_OK) {
+    Serial.println("Sent with success");
+  }
+  else {
+    Serial.println("Error sending the data");
+  }
+
+  delay(1000);
+}
+```
+
+RECEIVER
+
+``` 
+//library yang dibutuhkan
+#include <esp_now.h>
+#include <WiFi.h>
+#include <CayenneMQTTESP32.h>
+#define CAYENNE_PRINT Serial
+
+//Struktur data yang dibutuhkan untuk menerima data dari ESP32 lain
+typedef struct struct_message {
+  int id;
+  float temp;
+  float hum;
+} struct_message;
+
+//Membuat struktur data myData, board1, board2, board3
+struct_message myData;
+struct_message board1;
+struct_message board2;
+struct_message board3;
+struct_message boardsStruct[3] = {board1, board2, board3};
+
+//Autentikasi untuk tersambung ke WiFi dan Cayenne
+const char* ssid = "k";   // your network SSID (name)
+const char* password = "123456779";   // your network password
+const char* username = "fa9de470-7f7b-11ed-b193-d9789b2af62b";
+const char* mqtt_password = "3b449543f2b1413ddffea61e5828a05ff09f07d6";
+const char* cliend_id = "40ce4d40-87f6-11ed-8d53-d7cd1025126a";
+float temperature[3];
+float humidity[3];
+
+//Memberitahukan apabila data berhasil diterima akan tampil di serial monitor
+void OnDataRecv(const uint8_t * mac_addr, const uint8_t *incomingData, int len) {
+  char macStr[18];
+  Serial.print("Packet received from: ");
+  snprintf(macStr, sizeof(macStr), "%02x:%02x:%02x:%02x:%02x:%02x",
+           mac_addr[0], mac_addr[1], mac_addr[2], mac_addr[3], mac_addr[4],
+           mac_addr[5]);
+  Serial.println(macStr);
+  memcpy(&myData, incomingData, sizeof(myData));
+  boardsStruct[myData.id - 1].temp = myData.temp;
+  boardsStruct[myData.id - 1].hum = myData.hum;
+  Serial.printf("Board: %d \n", myData.id);
+  Serial.printf("Temperature: %.2f \n", boardsStruct[myData.id - 1].temp);
+  Serial.printf("Humidity: %.2f \n", boardsStruct[myData.id - 1].hum);
+  Serial.println();
+  temperature[myData.id - 1] = boardsStruct[myData.id - 1].temp;
+  humidity[myData.id - 1] = boardsStruct[myData.id - 1].hum;
+}
+
+void setup() {
+  Serial.begin(115200);//Inisiasli serial dengan 115200 baud rate
+  WiFi.mode(WIFI_STA);//Inisiasi ESP32 menjadi station
+  //Inisiasi ESP-NOW
+  if (esp_now_init() != ESP_OK) {
+    Serial.println("Error initializing ESP-NOW");
+    return;
+  }
+  //Mendapatkan informasi dari ESP32 yang mengirimkan data ke Koordinator
+  esp_now_register_recv_cb(OnDataRecv);
+  Cayenne.begin(username, mqtt_password, cliend_id, ssid, password);
+}
+
+void loop() {
+  Cayenne.loop(); //Mebuat fungsi Cayenne berjalan berulang-ulang untuk mengirimkan data
+  delay(1000);
+}
+//Mengirimkan data ke Cayenne yang diterima oleh ESP32 koordinator, terdapat 2 ESP32 yang menjadi transmitter
+CAYENNE_OUT_DEFAULT()
+{
+  Cayenne.virtualWrite(1, temperature[0], "temperature", "Celcius");
+  Cayenne.virtualWrite(2, humidity[0], "humidity", "%");
+  Cayenne.virtualWrite(3, temperature[1], "temperature", "Celcius");
+  Cayenne.virtualWrite(4, humidity[1], "humidity", "%");
+  Cayenne.virtualWrite(5, temperature[2], "temperature", "Celcius");
+  Cayenne.virtualWrite(6, humidity[2], "humidity", "%");
+}
+```
+## HASIL PERCOBAAN
+
+### SENDER
+![IMG20230101142840](https://user-images.githubusercontent.com/121760251/210786283-587824b3-bad9-4462-8346-36173179b553.jpg)
+
+### RECEIVER
+![IMG20230101143016](https://user-images.githubusercontent.com/121760251/210786357-42498009-085a-40d1-9ce0-1043d8d53a8c.jpg)
+
+### HASIL
+![image](https://user-images.githubusercontent.com/121760251/210786623-3974b22e-4f87-4cf7-99f2-0e2c3c43f57a.png)
+
+## KESIMPULAN 
+
+Dalam pratikum ini disimpulkan bahwa pemrogaman untuk IoT dapat dikembangkan lebih lanjut, dengan protokol komunikasi antar ESP32 melalui ESP-NOW dan dapat dikembangkan untuk saling bertukar data dengan memanfaatkan nilai dari sensor DHT11. Kedepannya dapat dikembangkan untuk mengirimkan data sensor-sensor lainnya.
+Nilai dari sensor DHT11 dibaca oleh dashboard Cayenne yang dikirimkan oleh ESP32 Koordinator.
