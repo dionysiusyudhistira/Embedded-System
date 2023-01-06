@@ -246,14 +246,12 @@ IFTTT
 ![image](https://user-images.githubusercontent.com/118667288/210917840-69cbf1be-0ecd-479e-aa53-56ed546da238.png)
 
 # C. THINGSPEAK (HTTP/REST) + SENSOR (DHT11)
+### PROGRAM
+<details>
+  <summary>Program (click to open)</summary>
 
-## ANALISA 
-
-Pada percobaan kali ini, digunakan protokol HTTP/REST dan server Thingspeak. REST atau Representational State Transfer adalah gaya arsitekturial dan pendekatan komunikasi yang bersifat stateless dan menggunakan HTTP/HTTPS untuk transmisi data. API yang menggunakan protokol REST disebut RESTful API. Pada percobaan ini, metode yang digunakan cukup sederhana, yaitu ESP32 hanya mengirimkan data sensor DHT11 ke server Thingspeak. Seperti pada percobaan sebelumnya, ESP32 harus tersambung pada jaringan WiFi.
-
-## PROGRAM 
- ```c
- #include <DHT.h>
+```c
+#include <DHT.h>
 #include <ESP8266WiFi.h>
  
 String apiKey = "O54IVHCUBLMPKMWD";     //  Enter your Write API key from ThingSpeak
@@ -330,30 +328,19 @@ void loop()
   delay(1000);
 }
 ```
-## HASIL PERCOBAAN
+</details>
 
 ![image](https://user-images.githubusercontent.com/118667288/210918703-8c53ef2f-a569-4090-be45-a590ad2d2fc5.png)
 
 ![image](https://user-images.githubusercontent.com/118667288/210918736-db82c694-7daf-4cd9-bea8-33b8da672c2b.png)
 
-
-## KESIMPULAN 
-
-Dari percobaan yang telah dilakukan, didapat kesimpulan sebagai berikut:
-
-1. ESP32 dapat berkomunikasi melalui internet melalui suatu protokol. Protokol merupakan peraturan atau prosedur untuk mengirimkan sebuah data pada perangkat elektronik.
-2. Protokol HTTP/REST merupakan salah satu protokol yang dapat digunakan ESP32 untuk berkomunkasi melalui internet. Protokol ini memiliki kelebihan yaitu memungkinkan untuk melakukan operasi CRUD (create, read, update, delete). Namun dengan kelemahan membutuhkan bandwidth yang lebih tinggi dari protokol MQTT.
-
-
-
 # D. ESP Now + IOT
-## ANALISA
-Dalam pratikum ini memakai protokol ESP-NOW berjumlah 3 buah ESP32 yang terbagiatas 2 buah ESP32 sebagai Sender dengan terhubung sensor DHT11 dan 1 buah ESP32 sebagai Receive/Koordinator yang akan mengirimkan nilai sensor dari 2 buah ESP32 tadi ke Cayenne.
-
-## PROGRAM 
-
+### PROGRAM
 SENDER
-```
+<details>
+  <summary>Program (click to open)</summary>
+
+```c
 //Library yang dibutuhkan
 #include <esp_now.h>
 #include <esp_wifi.h>
@@ -478,10 +465,13 @@ void loop() {
   delay(1000);
 }
 ```
-
+</setails>
+                        
 RECEIVER
+<details>
+  <summary>Program (click to open)</summary>
 
-``` 
+```c
 //library yang dibutuhkan
 #include <esp_now.h>
 #include <WiFi.h>
@@ -558,18 +548,13 @@ CAYENNE_OUT_DEFAULT()
   Cayenne.virtualWrite(6, humidity[2], "humidity", "%");
 }
 ```
-## HASIL PERCOBAAN
+</details>
 
-### SENDER
+SENDER
 ![IMG20230101142840](https://user-images.githubusercontent.com/121760251/210786283-587824b3-bad9-4462-8346-36173179b553.jpg)
 
-### RECEIVER
+RECEIVER
 ![IMG20230101143016](https://user-images.githubusercontent.com/121760251/210786357-42498009-085a-40d1-9ce0-1043d8d53a8c.jpg)
 
-### HASIL
+HASIL
 ![image](https://user-images.githubusercontent.com/121760251/210786623-3974b22e-4f87-4cf7-99f2-0e2c3c43f57a.png)
-
-## KESIMPULAN 
-
-Dalam pratikum ini disimpulkan bahwa pemrogaman untuk IoT dapat dikembangkan lebih lanjut, dengan protokol komunikasi antar ESP32 melalui ESP-NOW dan dapat dikembangkan untuk saling bertukar data dengan memanfaatkan nilai dari sensor DHT11. Kedepannya dapat dikembangkan untuk mengirimkan data sensor-sensor lainnya.
-Nilai dari sensor DHT11 dibaca oleh dashboard Cayenne yang dikirimkan oleh ESP32 Koordinator.
