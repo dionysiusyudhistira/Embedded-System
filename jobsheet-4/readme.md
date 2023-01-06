@@ -1,65 +1,50 @@
-
 # Jobsheet 4 
 
+## Anggota Kelompok
+- Dionysius Brammetya Yudhistira
+- Noviantie Putriastuti
 
-# Anggota Kelompok
+# 1. CAYENNE (MQTT) + SENSOR (DHT11) + LED (ON/OFF) + BUTTON DI WEBSITE MONITORING
+### Program
+<details>
+  <summary>Program (click to open)</summary>
 
-- Hanif Nugraha Ramadhan {4.31.20.0.10}
-- Muhammad Rafif Hasani  {4.31.20.0.16}
-
-
-# A. CAYENNE (MQTT) + SENSOR (DHT11) + LED (ON/OFF) + BUTTON DI WEBSITE MONITORING
-
-## ANALISA
-Dalam percobaan kali ini menggunakan ESP32 yang terpasang sensor DHT11 berfungsi untuk membaca Suhu dan Temperature kemudian diteruskan oleh ESP32 melalui protokol MQTT (Cayenne) untuk agar bisa terhubung dan berkomunikasi antar mesin.
-
-Library yang dibutuhkan adalah 
 ```c
-#include "CayenneMQTTESP32.h" // library Cayenne untuk MQTT
-#include "DHT.h" // library DHT
-```
-
-Kemudian mendefinisikan beberapa yang dibutuhkan seperti pin GPIO DHT akan disambungkan ke pin 4 di ESP32 lalu memilih tipe DHT lalu memilih pin GPIO untuk keluaran LED di pin 16.
-```c
+#include "CayenneMQTTESP32.h" // ganti tanda " dengan > jika program error
+#include "DHT.h"
+//#define CAYENNE_DEBUG
 #define CAYENNE_PRINT Serial
 #define DHTPIN 4     // what digital pin we're connected to
+// Feather HUZZAH ESP8266 note: use pins 3, 4, 5, 12, 13 or 14 --
+// Pin 15 can work but DHT must be disconnected during program upload.
+// Uncomment whatever type you're using!
 #define DHTTYPE DHT11   // DHT 11
-const int ledPin = 16;
-```
+//#define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
+//#define DHTTYPE DHT21   // DHT 21 (AM2301)
 
-Lalu ESP memerlukan koneksi ke internet melalui WIFI yang ada dan autentifikasi ke Cayenne dengan memasukan username, password, dan clientID.
-```c
 // WiFi network info.
 char ssid[] = "home-mnl";
 char wifiPassword[] = "h0m3-121";
+const int ledPin = 16;
 
 // Cayenne authentication info. This should be obtained from the Cayenne Dashboard.
 char username[] = "9f1901b0-7f54-11ed-b193-d9789b2af62b";
 char password[] = "15d7c1af5defe0be2d748a44ebec74251ae13b9e";
 char clientID[] = "82f43c00-8749-11ed-b193-d9789b2af62b";
-```
 
- menginisiasi DHT berada di pin GPIO berapa dan tipe DHT nya
-```c
+unsigned long lastMillis = 0;
 DHT dht(DHTPIN, DHTTYPE);
-```
 
-```c
-// Memulai sebuah fungsi yang dijalankan sekali dengan lalu lintas data berada pada 9600 baud rate.
 void setup() {
   Serial.begin(9600);
-  dht.begin(); //Memulai DHT
-  Cayenne.begin(username, password, clientID, ssid, wifiPassword); // mengautentifikasi ke Cayenne agar dapat terhubung
-  pinMode(ledPin, OUTPUT); // menginisiasi LED berapa di pin dan berfungsi sebagai output
-  digitalWrite(ledPin, LOW); // memberikan perintah led untuk nilai 'LOW'
+  dht.begin();
+  Cayenne.begin(username, password, clientID, ssid, wifiPassword);
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, LOW);
 }
-```
-
-Fungsi dibagian void loop adalah untuk membaca nilai sensor DHT 11
-```c
-float h, t, f; 
+float h, t, f;
 void loop() {
-  Cayenne.loop(); // memerintahkan untuk fungsi Cayenne bekerja secara berulang-ulang
+  Cayenne.loop();
 
   h = dht.readHumidity();
   // Read temperature as Celsius (the default)
@@ -75,10 +60,6 @@ void loop() {
 
 }
 
-```
-
-Fungsi di bawah ini adalah untuk mengirimkan data nilai sensor DHT11 dan mengambil nilai button yang berada di Cayenne
-```c
 //Mengirimkan data ke MQTT Cayenne dan menampilkannya di Dashboard Aplikasi Cayenne
 CAYENNE_OUT(1)
 {
@@ -95,26 +76,14 @@ CAYENNE_IN(3)
   digitalWrite(ledPin, !getValue.asInt());  // to get the value from the website
 }
 ```
-
-
-## KESIMPULAN
-Dalam pratikum ini disimpulkan bahwa ESP32 dapat digunakan untuk perangkat IoT yang terhubung ke internet sehingga user dapat kontrol perangkat ESP32 dalam jarah jauh dengan syarat ESP32 selalu terhubung dengan internet dan terhubung ke broker MQTT (dalam pratikum ini menggunakan Cayenne).
-
-Pratikum ini contoh dengan membaca sensor DHT11 yang dikirimkan ke Cayenne dan Cayenne mengirimkan sebuah nilai (0/1) untuk memberikan perintah ESP32 untuk menghidupkan LED.
-## DOKUMENTASI
-## ESP32 + MQTT (Cayenne) + Sensor Temperature, Humidity (DHT11) + LED (Output)
+</details>
 
 https://user-images.githubusercontent.com/121760251/210358473-1bae9070-5118-448c-a296-1a2ef45dc1a3.mp4
 
-
-
-
 # B. ADAFRUIT.IO (MQTT) + IFTTT -> SENSOR (DHT11) + LED (ON/OFF) -> SUARA (GOOGLE ASSITANT)
-
-## ANALISA 
-
-Pada percobaan kali ini, digunakan protokol MQTT agar ESP32 dapat berkomunikasi dengan perangkat lain melalui internet. MQTT (Message Queuing Telemetry Transport) protokol merupakan sebuah protokol yang berjalan diatas stack TCP/IP dan dirancang khusus untuk machine to machine yang tidak memiliki alamat khusus. Maksud dari kata tidak memiliki alamat khusus ini seperti halnya sebuah arduino, raspi atau device lain yang tidak memiliki alamat khusus. Sistem kerja MQTT menerapkan Publish dan Subscribe data. Dan pada penerapannya, device akan terhubung pada sebuah Broker dan mempunyai suatu Topic tertentu. Platform MQTT server yang digunakan adalah Adafruit.io. Pada percobaan ini, ESP32 akan mengirimkan data sensor DHT11 (suhu dan kelembaban) ke server MQTT (Adafruit.io) dan akan dicoba untuk melakukan kontrol LED melalui Adafruit.io
-## PROGRAM 
+### Program
+<details>
+  <summary>Program (click to open)</summary>
 
 ```c
 #include <ESP8266WiFi.h>
@@ -262,14 +231,7 @@ void MQTT_connect() {
   Serial.println("MQTT Connected!");
 }
 ```
-
-## RANGKAIAN
-
-![image](https://user-images.githubusercontent.com/118667288/210917439-3fab5753-4bc0-4531-b494-2601545e3152.png)
-
-![image](https://user-images.githubusercontent.com/118667288/210917479-8d5d9cd4-a514-49f2-9ddf-d961a4737beb.png)
-
-## HASIL PERCOBAAN
+</details>
 
 Serial Monitor
 ![image](https://user-images.githubusercontent.com/118667288/210917732-da67957a-6d9e-484f-94e3-e3405bd348d5.png)
