@@ -135,6 +135,10 @@ https://user-images.githubusercontent.com/121749328/210941971-4a059997-7d3b-4cbd
     
 ## 2. Mengakses Sensor DHT 11 (Single Wire / BUS)
 ### Program
+Sensor DHT11 berfungsi untuk membaca kelembapan dan suhu yang dapat di ESP32 untuk mengumpulkan data dan menjadikannya sebuah input untuk sebuah sistem seperti dalam contoh jika suhu dibawah 30° C maka LED akan berjalan runnning.
+<details>
+    <summary>Program (click to open)</summary>
+    
 ```c
 //Library yang dibutuhkan
 #include "DHT.h"
@@ -273,14 +277,16 @@ digitalWrite(ledPin3, LOW);
  Serial.println(F("°F"));
 }
 ```
-### Kesimpulan
-- Sensor DHT11 berfungsi untuk membaca kelembapan dan suhu yang dapat di ESP32 untuk mengumpulkan data dan menjadikannya sebuah input untuk sebuah sistem seperti dalam contoh jika suhu dibawah 30° C maka LED akan berjalan runnning.
-- Sensor DHT11 memiliki delay pembacaan sekitar 2 detik sehingga pembacaan realtime dengan di serial monitor akan mengalami delay.
+</details>
 
+https://user-images.githubusercontent.com/121749328/210943632-1783c7f1-904e-4585-bfff-72d7651df4c0.mp4
 
 ## 3. Mengakses Sensor RFID (SPI Communication)
 ### Program
 Membaca RFID
+<details>
+    <summary>Program (click to open)</summary>
+
 ```c
 //Library yang dibutuhkan
 #include <SPI.h>
@@ -431,5 +437,6 @@ rfid.PCD_StopCrypto1(); // stop encryption on PCD
 }
 }
 ```
-### Kesimpulan
-Pratikum ini memberikan kesimpulan dalam pembacaan sensor dapat menjadi suatu input bagi keluaran perangkat lainnya, seperti dalam RFID yang membaca kartu yang benar maka akan membuat LED dan Servo bergerak sesuai dengan yang diperintahkan.
+</details>
+
+https://user-images.githubusercontent.com/121749328/210944052-8c7465a4-5daf-4d0b-beea-1c47f7210ba0.mp4
