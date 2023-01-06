@@ -6,10 +6,12 @@ PROTOKOL KOMUNIKASI DAN SENSOR
 - Dionysius Brammetya Yudhistira
 - Noviantie Putriastuti
 
-
 ## 1. ESP32 Capacitive Touch Sensor
 ### Program
-a-capasitivetouchsensor - Hanya membaca sentuhan yang dilakukan dan menampilkan di serial monitor
+Hanya membaca sentuhan yang dilakukan dan menampilkan di serial monitor
+<details>
+    <summary>Program (click to open)</summary>
+
 ```c
 // ESP32 Touch Test
 // Just test touch pin - Touch0 is T0 which is on GPIO 4. 
@@ -23,9 +25,12 @@ Serial.println(touchRead(4));  // menampilkan nilai dari sentuhan yang ada di pi
 delay(1000);
 }
 ```
+</details>
 
+Jika disentuh maka LED akan menyala ketika disentuh dan tidak menyala jika tidak disentuh
+<details>
+    <summary>Program (click to open)</summary>
 
-a-capasitivetouchsensorled1 - Jika disentuh maka LED akan menyala ketika disentuh dan tidak menyala jika tidak disentuh
 ```c
 // menginisiasi pin GPIO yang akan dipakai
 const int touchPin = 4; //Pin GPIO yang mendeteksi sentuhan
@@ -62,9 +67,12 @@ void loop(){
   delay(500);
 }
 ```
+</details>
 
+LED Running
+<details>
+    <summary>Program (click to open)</summary>
 
-a-capasitivetouchsensorled2 - LED Running
 ```c
 // menginisiasi pin GPIO yang akan dipakai
 const int touchPin = 4; 
@@ -115,9 +123,7 @@ digitalWrite(ledPin3, LOW);
   delay(500);
 }
 ```
-### Kesimpulan
-Pratikum ini memberikan kesimpulan bahwa dalam pemanfaatan ESP32 sebagai mikrokontroller dapat membaca sensor berupa sentuhan kemudian dari sentuhan itu dapat diberikan output dalam contoh ini akan menghidupkan LED dan membuat LED running dari kiri ke kanan.
-
+</details>
 
 ## 2. Mengakses Sensor DHT 11 (Single Wire / BUS)
 ### Program
@@ -419,26 +425,3 @@ rfid.PCD_StopCrypto1(); // stop encryption on PCD
 ```
 ### Kesimpulan
 Pratikum ini memberikan kesimpulan dalam pembacaan sensor dapat menjadi suatu input bagi keluaran perangkat lainnya, seperti dalam RFID yang membaca kartu yang benar maka akan membuat LED dan Servo bergerak sesuai dengan yang diperintahkan.
-
-# Dokumentasi
-## 1. ESP32 Capacitive Touch Sensor
-
-
-https://user-images.githubusercontent.com/121749328/210420472-01695166-4495-483d-b357-02a3a775a5c5.mp4
-
-
-
-https://user-images.githubusercontent.com/121749328/210420494-618865d2-0c64-4f4f-b644-ecce461140a1.mp4
-
-
-## 2. Mengakses Sensor DHT 11 (Single Wire / BUS)
-
-
-https://user-images.githubusercontent.com/121749328/210420793-4792e292-5123-4d82-8406-9fa820c9cb37.mp4
-
-
-## 3. Mengakses Sensor RFID (SPI Communication)
-
-
-https://user-images.githubusercontent.com/121749328/210421025-e7945f28-0647-435a-8011-7daf474a30b4.mp4
-
