@@ -465,7 +465,7 @@ void loop() {
   delay(1000);
 }
 ```
-</setails>
+</details>
                         
 RECEIVER
 <details>
