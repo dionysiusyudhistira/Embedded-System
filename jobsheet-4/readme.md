@@ -234,6 +234,7 @@ void MQTT_connect() {
 </details>
 
 Serial Monitor
+  
 ![image](https://user-images.githubusercontent.com/118667288/210917732-da67957a-6d9e-484f-94e3-e3405bd348d5.png)
 
 Adafruit.io
@@ -241,16 +242,8 @@ Adafruit.io
 ![image](https://user-images.githubusercontent.com/118667288/210917794-ad67d112-c173-4d89-873e-b48c4ac23068.png)
 
 IFTTT
+  
 ![image](https://user-images.githubusercontent.com/118667288/210917840-69cbf1be-0ecd-479e-aa53-56ed546da238.png)
-
-
-## KESIMPULAN 
-
-Dari percobaan yang telah dilakukan, didapat kesimpulan sebagai berikut:
-1. ESP32 dapat berkomunikasi melalui internet melalui suatu protokol. Protokol merupakan peraturan atau prosedur untuk mengirimkan sebuah data pada perangkat elektronik.
-2. MQTT merukapan suatu protokol yang sangat ringan dan membutuhkan bandwidth yang sangat kecil, sehingga tidak memerlukan jaringan yang cepat. Namun dengan kekurangan protokol ini hanya bisa bertukar data informasi yaitu publish dan subscribe, tidak dapat malakukan operasi create dan delete.
-3. Salah satu server protokol MQTT yang dapat digunakan adalah Adafruit.io, dengan cara kerja publish (mengirim data ke server) dan subscribe (menerima data dari  server).
-4. ESP32 dapat saling terhubung dengan platform lain melalui internet.
 
 # C. THINGSPEAK (HTTP/REST) + SENSOR (DHT11)
 
