@@ -6,8 +6,8 @@ Cayenne (MQTT) + SENSOR (DHT11) + LED (ON/OFF) + BUTTON di website monitoring
 
 ## Anggota Kelompok
 
-- Hanif Nugraha Ramadhan
-- Muhammad Rafif Hasani
+- Dionysius Brammetya Yudhistira
+- Noviantie Putriastuti
 
 ## Skematik
 ![image](https://user-images.githubusercontent.com/118155742/210129902-f24a85d2-176a-4027-9952-b82e8edb55d9.png)
